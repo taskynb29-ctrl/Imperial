@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IMPERIAL — LED Mirror Almaty</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Manrope:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a0a09;
+    --surface:#141312;
+    --surface-2:#1c1a17;
+    --line:rgba(255,255,255,0.09);
+    --gold-1:#f0cd7e;
+    --gold-2:#caa04a;
+    --gold-3:#8a6a26;
+    --paper:#f4efe5;
+    --muted:#a49a86;
+    --warm:#ffb95c;
+    --cold:#8fd0ff;
+    --neutral:#f4f0e6;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--ink); color:var(--paper); font-family:'Manrope', sans-serif; overflow-x:hidden;}
+  ::selection{background:var(--gold-2); color:#0b0a08;}
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  button{font-family:inherit;}
+  .wrap{max-width:1240px; margin:0 auto; padding:0 28px;}
+  h1,h2,h3{font-family:'Montserrat', sans-serif; letter-spacing:0.01em;}
+  .eyebrow{
+    font-size:12px; letter-spacing:0.26em; text-transform:uppercase; color:var(--gold-1);
+    font-weight:700; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:"◈"; font-size:11px;}
+
+  /* ============ NAV ============ */
+  header.nav{position:fixed; top:0; left:0; right:0; z-index:300; background:rgba(10,10,9,0.72); backdrop-filter:blur(16px); border-bottom:1px solid var(--line);}
+  .nav-inner{max-width:1240px; margin:0 auto; padding:14px 28px; display:flex; align-items:center; justify-content:space-between; gap:20px;}
+  .brandmark{display:flex; align-items:center; gap:10px; cursor:pointer;}
+  .brandmark svg{width:28px; height:22px;}
+  .brand-txt{display:flex; flex-direction:column; line-height:1;}
+  .brand-txt .word{font-family:'Montserrat'; font-weight:800; font-size:17px; letter-spacing:0.06em;
+    background:linear-gradient(180deg,#f6e3a1,#c79a3f 60%,#8a6a26); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .brand-txt .sub{font-size:8.5px; letter-spacing:0.22em; color:var(--muted); margin-top:3px; font-weight:700;}
+  nav.links{display:flex; gap:26px; align-items:center;}
+  nav.links a{font-size:13px; font-weight:600; color:var(--muted); transition:color .2s;}
+  nav.links a:hover{color:var(--gold-1);}
+  .nav-right{display:flex; align-items:center; gap:12px;}
+  .icon-btn{width:38px; height:38px; border-radius:50%; border:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--paper); flex-shrink:0;}
+  .icon-btn:hover{border-color:var(--gold-2); color:var(--gold-1);}
+  .langsw{position:relative;}
+  .langsw > button{display:flex; align-items:center; gap:6px; background:none; border:1px solid var(--line); color:var(--paper); font-weight:700; font-size:12.5px; padding:9px 12px; border-radius:20px; cursor:pointer;}
+  .langsw-menu{position:absolute; top:calc(100% + 8px); right:0; background:var(--surface-2); border:1px solid var(--line); border-radius:8px; overflow:hidden; display:none; min-width:90px;}
+  .langsw-menu.open{display:block;}
+  .langsw-menu button{width:100%; text-align:left; background:none; border:none; color:var(--paper); font-size:12.5px; font-weight:600; padding:10px 14px; cursor:pointer;}
+  .langsw-menu button:hover{background:rgba(255,255,255,.05); color:var(--gold-1);}
+  .navcta{background:linear-gradient(180deg,#f6e3a1,#c79a3f); color:#1a1305; font-weight:800; font-size:12.5px; padding:11px 20px; border-radius:24px; white-space:nowrap;}
+  .burger{display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none;}
+  .burger span{width:20px; height:2px; background:var(--gold-1);}
+
+  /* ============ FLOATING DOCK ============ */
+  .dock{position:fixed; right:22px; top:50%; transform:translateY(-50%); z-index:250; display:flex; flex-direction:column; gap:10px;}
+  .dock a, .dock button{width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 20px -6px rgba(0,0,0,.6); border:none; cursor:pointer;}
+  .dock .wa{background:#25D366;}
+  .dock .ig{background:radial-gradient(circle at 30% 110%, #ffdb73 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%);}
+  .dock .loc{background:var(--surface-2); border:1px solid var(--line);}
+  .dock .top{background:linear-gradient(180deg,#f6e3a1,#c79a3f);}
+  .dock svg{width:20px; height:20px;}
+
+  /* ============ HERO ============ */
+  .hero{position:relative; padding:150px 0 70px; background:
+      radial-gradient(ellipse 55% 45% at 12% 20%, rgba(201,160,63,0.13), transparent 60%),
+      var(--ink);}
+  .hero-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;}
+  .hero h1{font-family:'Cormorant Garamond', serif; font-weight:600; line-height:0.98;}
+  .hero h1 .l1{display:block; font-size:clamp(38px,4.6vw,58px); color:var(--paper); letter-spacing:0.01em;}
+  .hero h1 .l2{display:block; font-size:clamp(38px,4.6vw,58px);
+    background:linear-gradient(180deg,#fbeec0 10%, #d9ac4c 55%, #8a6a26 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent; margin-top:2px;}
+  .hero h1 .l3{display:block; font-family:'Manrope'; font-size:15px; font-weight:800; letter-spacing:0.5em; color:var(--muted); margin-top:14px;}
+  .hero p.desc{max-width:460px; margin-top:22px; color:var(--muted); font-size:15.5px; line-height:1.75;}
+  .hero-ctas{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+  .btn{display:inline-flex; align-items:center; gap:9px; padding:15px 26px; border-radius:6px; font-weight:700; font-size:13.5px; cursor:pointer; border:none; transition:transform .25s, box-shadow .25s;}
+  .btn-gold{background:linear-gradient(180deg,#f6e3a1,#c79a3f 65%, #a17f30); color:#1a1305; box-shadow:0 10px 28px -8px rgba(201,160,63,.5);}
+  .btn-gold:hover{transform:translateY(-2px); box-shadow:0 16px 32px -10px rgba(201,160,63,.65);}
+  .btn-ghost{background:transparent; border:1px solid var(--line); color:var(--paper);}
+  .btn-ghost:hover{border-color:var(--gold-2); color:var(--gold-1);}
+  .hero-stats{display:flex; gap:30px; margin-top:44px; flex-wrap:wrap;}
+  .hstat{display:flex; align-items:center; gap:10px;}
+  .hstat .ic{width:32px; height:32px; border-radius:50%; background:rgba(201,160,63,.12); display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+  .hstat .ic svg{width:16px; height:16px;}
+  .hstat b{display:block; font-family:'Montserrat'; font-size:16px; font-weight:800; color:var(--gold-1);}
+  .hstat span{font-size:11px; color:var(--muted); letter-spacing:.02em;}
+
+  /* hero visual (css-drawn scene) */
+  .hero-visual{position:relative; border-radius:14px; overflow:hidden; aspect-ratio:6/5;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 0%, rgba(120,95,45,.28), transparent 65%),
+      linear-gradient(150deg, #2b241a 0%, #1a1611 45%, #0e0c09 100%);
+    border:1px solid var(--line);
+  }
+  .hero-visual::before{content:""; position:absolute; inset:0;
+    background-image:repeating-linear-gradient(100deg, rgba(255,255,255,.02) 0 2px, transparent 2px 60px);
+  }
+  .scene-mirror{position:absolute; left:50%; top:38%; transform:translate(-50%,-50%); width:56%; aspect-ratio:3/4;
+    border:9px solid #caa04a; border-radius:46% 46% 10px 10px / 30% 30% 10px 10px;
+    background:linear-gradient(160deg,#3a3a3d,#131315 60%,#242426);
+    box-shadow:0 0 60px 10px rgba(240,205,126,.35), inset 0 0 0 2px rgba(255,220,150,.5);
+  }
+  .scene-counter{position:absolute; left:6%; right:6%; bottom:14%; height:12%;
+    background:linear-gradient(180deg, #2a231a, #0e0c09); border-radius:4px; border-top:1px solid rgba(255,255,255,.08);}
+  .scene-glow{position:absolute; left:50%; bottom:24%; transform:translateX(-50%); width:70%; height:40%;
+    background:radial-gradient(ellipse at center, rgba(240,205,126,.18), transparent 70%); filter:blur(6px);}
+  .scene-bottle{position:absolute; left:14%; bottom:16%; width:5%; height:11%; background:linear-gradient(180deg,#8a6a26,#3a2c10); border-radius:3px 3px 1px 1px;}
+  .scene-bottle2{position:absolute; left:20%; bottom:16%; width:4%; height:8%; background:linear-gradient(180deg,#caa04a,#5a4416); border-radius:3px 3px 1px 1px;}
+  .scene-tag{position:absolute; right:16px; top:16px; background:rgba(10,10,9,.7); border:1px solid var(--gold-2); color:var(--gold-1); font-size:11px; font-weight:700; padding:7px 12px; border-radius:20px; backdrop-filter:blur(6px);}
+
+  /* ============ SECTION SHELL ============ */
+  section{padding:100px 0; position:relative;}
+  .sec-top{display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; margin-bottom:48px;}
+  .sec-top h2{font-size:clamp(28px,3.6vw,40px); font-weight:800; color:var(--paper); margin-top:12px; line-height:1.15; max-width:560px;}
+  .sec-top p{color:var(--muted); margin-top:14px; font-size:15px; line-height:1.7; max-width:480px;}
+  .divider{height:1px; background:linear-gradient(90deg, transparent, var(--line), transparent); max-width:1240px; margin:0 auto;}
+
+  /* ============ TOOL / STEPS ============ */
+  .steps-row{display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-bottom:44px;}
+  .step-card{border:1px solid var(--line); border-radius:8px; padding:22px 20px; background:var(--surface);}
+  .step-card .num{font-family:'Montserrat'; font-weight:800; font-size:13px; color:var(--gold-1); margin-bottom:10px;}
+  .step-card h4{font-size:14px; font-weight:700; margin-bottom:6px;}
+  .step-card p{font-size:12.5px; color:var(--muted); line-height:1.5;}
+
+  .shape-gallery{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+  .shape-card{border:1px solid var(--line); border-radius:10px; padding:26px 18px; background:var(--surface); text-align:center; cursor:pointer; transition:border-color .2s, transform .2s; position:relative;}
+  .shape-card:hover{transform:translateY(-3px); border-color:var(--gold-2);}
+  .shape-card.active{border-color:var(--gold-1); background:rgba(201,160,63,.08);}
+  .shape-ico{width:64px; height:78px; margin:0 auto 16px; border:3px solid var(--gold-2); box-shadow:0 0 20px 2px rgba(201,160,63,.35);}
+  .shape-ico.ic-rect{border-radius:6px;}
+  .shape-ico.ic-rounded{border-radius:28px;}
+  .shape-ico.ic-oval{border-radius:50%; width:64px; height:64px;}
+  .shape-ico.ic-arch{border-radius:44% 44% 6px 6px / 30% 30% 6px 6px;}
+  .shape-ico.ic-capsule{border-radius:999px;}
+  .shape-ico.ic-softrect{border-radius:16px;}
+  .shape-ico.ic-blob{border-radius:58% 42% 51% 49% / 45% 48% 52% 55%;}
+  .shape-card span{font-size:12.5px; font-weight:700; color:var(--paper);}
+  .shape-card .badge{position:absolute; top:10px; right:10px; background:var(--gold-1); color:#1a1305; font-size:9px; font-weight:800; padding:3px 8px; border-radius:10px; letter-spacing:.05em;}
+
+  .tool-cta{text-align:center; margin-top:44px;}
+
+  /* ============ AR STAGE ============ */
+  .ar-section{background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .ar-grid{display:grid; grid-template-columns:1fr 1.1fr; gap:56px; align-items:start;}
+  .ar-panel p.lead{color:var(--muted); margin-top:14px; font-size:14.5px; line-height:1.7; max-width:440px;}
+  .stage{position:relative; aspect-ratio:4/5; border-radius:10px;
+    background:radial-gradient(ellipse at 50% 20%, rgba(255,255,255,.05), transparent 55%), linear-gradient(160deg, #221e17, #14120e);
+    border:1px solid var(--line); display:flex; align-items:center; justify-content:center; overflow:hidden;}
+  .stage::before{content:""; position:absolute; inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+    background-size:26px 26px;}
+  .mirror-frame{position:relative; width:62%; aspect-ratio:3/4; background:#0c0b09; display:flex; align-items:center; justify-content:center; transition:all .45s cubic-bezier(.2,.9,.3,1); border:10px solid #b8923f;}
+  .mirror-frame.shape-rect{border-radius:6px;}
+  .mirror-frame.shape-rounded{border-radius:34px;}
+  .mirror-frame.shape-oval{border-radius:50%;}
+  .mirror-frame.shape-arch{border-radius:46% 46% 6px 6px / 30% 30% 6px 6px;}
+  .mirror-frame.shape-capsule{border-radius:999px;}
+  .mirror-frame.shape-softrect{border-radius:22px;}
+  .mirror-frame.shape-blob{border-radius:58% 42% 51% 49% / 45% 48% 52% 55%;}
+  .mirror-glass{position:absolute; inset:0; overflow:hidden; background:linear-gradient(160deg, #2a2a2c, #111113 60%, #232325); display:flex; align-items:center; justify-content:center; border-radius:inherit;}
+  .mirror-glass img{width:100%; height:100%; object-fit:cover;}
+  .mirror-glass .ph{color:#5b5a55; font-size:12.5px; text-align:center; padding:20px; line-height:1.6;}
+  .mirror-glass .ph svg{width:32px; height:32px; margin:0 auto 10px; opacity:.6;}
+  .mirror-frame.fr-gold{border-color:#c79a3f;}
+  .mirror-frame.fr-gray{border-color:#8b8b8b;}
+  .mirror-frame.fr-white{border-color:#e9e6dd;}
+  .mirror-frame.fr-black{border-color:#2a2a2a;}
+  .mirror-frame.lt-warm{box-shadow:0 0 40px 6px rgba(255,185,92,.55);}
+  .mirror-frame.lt-cold{box-shadow:0 0 40px 6px rgba(143,208,255,.55);}
+  .mirror-frame.lt-neutral{box-shadow:0 0 40px 6px rgba(244,240,230,.5);}
+  .mirror-frame.pos-floating{transform:translateY(-4px);}
+  .mirror-frame.pos-floating::after{content:""; position:absolute; left:6%; right:6%; bottom:-22px; height:22px; background:radial-gradient(ellipse at center, rgba(0,0,0,.55), transparent 70%); filter:blur(4px);}
+  .mirror-frame.pos-frontal.lt-warm{box-shadow:inset 0 0 0 3px rgba(255,185,92,.85), 0 0 26px 2px rgba(255,185,92,.3);}
+  .mirror-frame.pos-frontal.lt-cold{box-shadow:inset 0 0 0 3px rgba(143,208,255,.85), 0 0 26px 2px rgba(143,208,255,.3);}
+  .mirror-frame.pos-frontal.lt-neutral{box-shadow:inset 0 0 0 3px rgba(244,240,230,.85), 0 0 26px 2px rgba(244,240,230,.3);}
+  .upload-btn{position:absolute; bottom:18px; left:50%; transform:translateX(-50%); background:rgba(11,10,8,.8); border:1px solid var(--gold-2); color:var(--gold-1); font-size:12px; font-weight:700; padding:9px 16px; border-radius:20px; cursor:pointer; z-index:5;}
+  .ar-controls{display:flex; flex-direction:column; gap:20px; margin-top:30px;}
+  .ctrl-row label.ctrl-label{display:block; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:9px;}
+  .swatches{display:flex; gap:9px; flex-wrap:wrap;}
+  .sw-btn{border:1px solid var(--line); background:var(--surface-2); color:var(--paper); font-size:12px; font-weight:600; padding:9px 13px; border-radius:20px; cursor:pointer; transition:all .2s;}
+  .sw-btn.active{border-color:var(--gold-2); background:rgba(201,160,63,.14); color:var(--gold-1);}
+  .sw-dot{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; border:1px solid rgba(255,255,255,.25);}
+  .ar-order{margin-top:26px;}
+  .ar-note{font-size:12px; color:var(--muted); margin-top:12px; line-height:1.6;}
+
+  /* ============ REVIEWS ============ */
+  .rev-summary{display:flex; align-items:center; gap:18px;}
+  .rev-summary b{font-family:'Montserrat'; font-size:46px; font-weight:800; color:var(--gold-1);}
+  .stars{color:var(--gold-1); font-size:14px; letter-spacing:2px;}
+  .avatar-row{display:flex; align-items:center; margin-top:14px;}
+  .avatar-row .av{width:32px; height:32px; border-radius:50%; border:2px solid var(--ink); margin-left:-10px; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; color:#1a1305;}
+  .avatar-row .av:first-child{margin-left:0;}
+  .rev-arrows{display:flex; gap:10px;}
+  .rev-arrows button{width:42px; height:42px; border-radius:50%; border:1px solid var(--line); background:var(--surface); color:var(--paper); cursor:pointer; display:flex; align-items:center; justify-content:center;}
+  .rev-arrows button:hover{border-color:var(--gold-2); color:var(--gold-1);}
+  .rev-track-outer{overflow:hidden;}
+  .rev-track{display:flex; gap:18px; transition:transform .5s cubic-bezier(.2,.8,.3,1);}
+  .rev-card{flex:0 0 calc(33.333% - 12px); background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:22px; display:flex; flex-direction:column; gap:14px;}
+  .rev-head{display:flex; align-items:center; gap:12px;}
+  .rev-avatar{width:40px; height:40px; border-radius:50%; background:linear-gradient(160deg,#caa04a,#6e5420); display:flex; align-items:center; justify-content:center; font-weight:800; color:#1a1305; font-size:14px; flex-shrink:0;}
+  .rev-name{font-weight:700; font-size:14px;}
+  .rev-loc{font-size:11.5px; color:var(--muted);}
+  .rev-quote{font-size:13.5px; color:var(--muted); line-height:1.65; min-height:70px;}
+  .rev-thumb{height:110px; border-radius:6px; background:linear-gradient(150deg,#2b241a,#141210); position:relative; overflow:hidden; border:1px solid var(--line);}
+  .rev-thumb .m{position:absolute; left:50%; top:46%; transform:translate(-50%,-50%); width:34%; height:70%; border:3px solid #caa04a; border-radius:50%; box-shadow:0 0 22px 4px rgba(240,205,126,.4);}
+  .rev-dots{display:flex; gap:7px; justify-content:center; margin-top:30px;}
+  .rev-dots span{width:7px; height:7px; border-radius:50%; background:var(--line); cursor:pointer;}
+  .rev-dots span.active{background:var(--gold-1); width:20px; border-radius:4px;}
+
+  .review-form{margin-top:50px; background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:32px; max-width:560px;}
+  .review-form h3{font-size:18px; font-weight:700; margin-bottom:6px;}
+  .review-form p.hint{font-size:12.5px; color:var(--muted); margin-bottom:20px;}
+  .field{margin-bottom:15px;}
+  .field label{display:block; font-size:11.5px; color:var(--muted); margin-bottom:7px;}
+  .field input, .field textarea{width:100%; background:var(--ink); border:1px solid var(--line); color:var(--paper); padding:12px 14px; font-family:'Manrope'; font-size:13.5px; border-radius:6px; outline:none;}
+  .field input:focus, .field textarea:focus{border-color:var(--gold-2);}
+  .field textarea{resize:vertical; min-height:76px;}
+  .star-pick{display:flex; gap:6px; font-size:22px; cursor:pointer;}
+  .star-pick span{color:#3a3527; transition:color .15s;}
+  .star-pick span.on{color:var(--gold-1);}
+  .step{display:none;}
+  .step.active{display:block;}
+  .form-msg{font-size:12.5px; color:var(--gold-1); margin-top:10px; min-height:18px;}
+
+  /* ============ PORTFOLIO ============ */
+  .port-grid{display:grid; grid-template-columns:repeat(6,1fr); gap:12px;}
+  .port-item{aspect-ratio:3/4; border-radius:8px; overflow:hidden; position:relative; border:1px solid var(--line);}
+  .port-item .scene{position:absolute; inset:0;}
+  .port-item:nth-child(1) .scene{background:linear-gradient(150deg,#2a2318,#101008);}
+  .port-item:nth-child(2) .scene{background:linear-gradient(150deg,#221f2a,#0d0c11);}
+  .port-item:nth-child(3) .scene{background:linear-gradient(150deg,#26241a,#0e0d09);}
+  .port-item:nth-child(4) .scene{background:linear-gradient(150deg,#241c14,#0c0a07);}
+  .port-item:nth-child(5) .scene{background:linear-gradient(150deg,#1c2420,#0a0d0b);}
+  .port-item:nth-child(6) .scene{background:linear-gradient(150deg,#242018,#0d0b08);}
+  .port-item .pm{position:absolute; left:50%; top:44%; transform:translate(-50%,-50%); width:52%; height:62%; border:3px solid #caa04a; box-shadow:0 0 24px 4px rgba(240,205,126,.35); transition:transform .4s;}
+  .port-item:nth-child(1) .pm{border-radius:44% 44% 6px 6px / 30% 30% 6px 6px;}
+  .port-item:nth-child(2) .pm{border-radius:50%; height:52%;}
+  .port-item:nth-child(3) .pm{border-radius:999px;}
+  .port-item:nth-child(4) .pm{border-radius:6px;}
+  .port-item:nth-child(5) .pm{border-radius:30px;}
+  .port-item:nth-child(6) .pm{border-radius:58% 42% 51% 49% / 45% 48% 52% 55%;}
+  .port-item:hover .pm{transform:translate(-50%,-50%) scale(1.06);}
+
+  /* ============ BENEFITS STRIP ============ */
+  .benefits{padding:60px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .benefits-row{display:grid; grid-template-columns:repeat(5,1fr); gap:20px;}
+  .benefit{display:flex; flex-direction:column; align-items:flex-start; gap:12px;}
+  .benefit svg{width:26px; height:26px;}
+  .benefit h5{font-size:13.5px; font-weight:700;}
+  .benefit p{font-size:11.5px; color:var(--muted); line-height:1.5;}
+
+  /* ============ CONTACT / FOOTER ============ */
+  footer{padding:80px 0 0;}
+  .foot-top{display:grid; grid-template-columns:1.3fr 1fr 1fr 1.3fr; gap:40px; padding-bottom:56px;}
+  .foot-brand .brandmark{margin-bottom:14px;}
+  .foot-brand p{font-size:13px; color:var(--muted); line-height:1.7; max-width:230px;}
+  .foot-social{display:flex; gap:10px; margin-top:20px;}
+  .foot-social a{width:36px; height:36px; border-radius:50%; border:1px solid var(--line); display:flex; align-items:center; justify-content:center;}
+  .foot-social a:hover{border-color:var(--gold-2); color:var(--gold-1);}
+  .foot-col h5{font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold-1); font-weight:700; margin-bottom:18px;}
+  .foot-col a, .foot-col p{display:block; font-size:13.5px; color:var(--muted); margin-bottom:11px; line-height:1.5;}
+  .foot-col a:hover{color:var(--gold-1);}
+  .foot-map{border-radius:8px; overflow:hidden; border:1px solid var(--line); height:150px; margin-top:6px;}
+  .foot-map iframe{width:100%; height:100%; border:0; filter:grayscale(.4) invert(.92) contrast(.9);}
+  .foot-bottom{border-top:1px solid var(--line); padding:22px 0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;}
+  .foot-bottom p{font-size:12px; color:var(--muted);}
+
+  [data-reveal]{opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease;}
+  [data-reveal].in{opacity:1; transform:translateY(0);}
+
+  @media (max-width:980px){
+    nav.links{display:none;}
+    .burger{display:flex;}
+    .hero-grid{grid-template-columns:1fr;}
+    .steps-row{grid-template-columns:repeat(2,1fr);}
+    .shape-gallery{grid-template-columns:repeat(2,1fr);}
+    .ar-grid{grid-template-columns:1fr; gap:36px;}
+    .rev-card{flex:0 0 100%;}
+    .port-grid{grid-template-columns:repeat(3,1fr);}
+    .benefits-row{grid-template-columns:repeat(2,1fr);}
+    .foot-top{grid-template-columns:1fr 1fr; gap:30px;}
+    .dock{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brandmark" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+      <svg viewBox="0 0 100 70" fill="none"><path d="M6 62 L18 20 L32 42 L50 8 L68 42 L82 20 L94 62 Z" stroke="#e9c874" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="none"/><circle cx="6" cy="16" r="6" fill="#e9c874"/><circle cx="18" cy="14" r="6" fill="#e9c874"/><circle cx="50" cy="4" r="6" fill="#e9c874"/><circle cx="82" cy="14" r="6" fill="#e9c874"/><circle cx="94" cy="16" r="6" fill="#e9c874"/></svg>
+      <div class="brand-txt"><span class="word">IMPERIAL</span><span class="sub">LED MIRROR ALMATY</span></div>
+    </div>
+    <nav class="links">
+      <a href="#top" data-t="nav_home">Басты бет</a>
+      <a href="#catalog" data-t="nav_products">Өнімдер</a>
+      <a href="#tool" data-t="nav_tool">Инструмент</a>
+      <a href="#reviews" data-t="nav_reviews">Пікірлер</a>
+      <a href="#portfolio" data-t="nav_works">Жұмыстар</a>
+      <a href="#contact" data-t="nav_contact">Байланыс</a>
+    </nav>
+    <div class="nav-right">
+      <a class="icon-btn" href="https://wa.me/message/CTMWT6TK5GVBL1" target="_blank" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </a>
+      <div class="langsw">
+        <button onclick="document.getElementById('lang-menu').classList.toggle('open')">
+          <span id="lang-label">ҚАЗ</span>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="langsw-menu" id="lang-menu">
+          <button onclick="setLang('kk')">Қазақша</button>
+          <button onclick="setLang('ru')">Русский</button>
+        </div>
+      </div>
+      <a class="navcta" href="https://wa.me/message/CTMWT6TK5GVBL1" target="_blank" data-t="nav_cta">Тапсырыс беру</a>
+      <button class="burger" aria-label="menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ FLOATING DOCK ============ -->
+<div class="dock">
+  <a class="wa" href="https://wa.me/message/CTMWT6TK5GVBL1" target="_blank" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="#fff"><path d="M12.04 2c-5.52 0-10 4.48-10 10 0 1.76.46 3.45 1.34 4.95L2 22l5.2-1.36c1.44.79 3.06 1.2 4.84 1.2 5.52 0 10-4.48 10-10s-4.48-10-10-10zm5.87 14.3c-.24.68-1.4 1.3-1.94 1.36-.5.06-1.1.28-3.7-.77-3.13-1.25-5.15-4.4-5.3-4.6-.15-.2-1.27-1.7-1.27-3.24 0-1.54.8-2.3 1.09-2.62.28-.3.62-.38.82-.38h.6c.2 0 .46-.04.7.53.24.58.83 2 .9 2.14.08.15.13.32.02.52-.1.2-.16.32-.32.5-.16.18-.33.4-.47.53-.16.15-.32.32-.14.62.19.3.83 1.37 1.79 2.22 1.23 1.1 2.26 1.44 2.57 1.6.3.16.48.13.66-.08.18-.2.76-.88.96-1.19.2-.3.4-.25.66-.15.28.1 1.75.83 2.05 .98.3.15.5.23.57.36.08.13.08.75-.16 1.43z"/></svg>
+  </a>
+  <a class="ig" href="https://www.instagram.com/imperial_almaty?igsh=bTFpb3l2MTFnc3Rm&utm_source=qr" target="_blank" aria-label="Instagram">
+    <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#fff" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.4" cy="6.6" r="1"/></svg>
+  </a>
+  <a class="loc" href="#contact" aria-label="Мекенжай">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#e9c874" stroke-width="1.7"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+  </a>
+  <button class="top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Жоғары">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#1a1305" stroke-width="2.4"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+</div>
+
+<!-- ============ HERO ============ -->
+<section id="top" class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow" data-t="hero_eyebrow">Премиум айналар өндірісі</div>
+        <h1 style="margin-top:18px;">
+          <span class="l1">IMPERIAL</span>
+          <span class="l2" data-t="hero_l2">LED MIRROR</span>
+          <span class="l3">ALMATY</span>
+        </h1>
+        <p class="desc" data-t="hero_desc">10 жылдан астам тәжірибе. Жеке өндіріс. Премиум сапа. Сіздің үйіңізге қалаған кез келген стильді әкелеміз.</p>
+        <div class="hero-ctas">
+          <a href="https://wa.me/message/CTMWT6TK5GVBL1" target="_blank" class="btn btn-gold">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span data-t="hero_btn1">WhatsApp арқылы тапсырыс беру</span>
+          </a>
+          <a href="#tool" class="btn btn-ghost">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            <span data-t="hero_btn2">Инструментпен танысу</span>
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hstat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#e9c874" stroke-width="1.6"><path d="M12 2l2.6 6.6L21 9.3l-5 4.6L17.4 21 12 17.6 6.6 21 8 13.9 3 9.3l6.4-.7z"/></svg></div><div><b data-t="stat1_n">10+</b><span data-t="stat1">жыл тәжірибе</span></div></div>
+          <div class="hstat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#e9c874" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div><b data-t="stat2_n">10 000+</b><span data-t="stat2">риза клиент</span></div></div>
+          <div class="hstat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#e9c874" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 2v4M16 2v4M4 10h16"/></svg></div><div><b data-t="stat3_n">5–7</b><span data-t="stat3">күнде дайын</span></div></div>
+          <div class="hstat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#e9c874" stroke-width="1.6"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg></div><div><b data-t="stat4_n">4 мм</b><span data-t="stat4">айна қалыңдығы</span></div></div>
+        </div>
+      </div>
+
+      <div class="hero-visual" data-reveal>
+        <div class="scene-glow"></div>
+        <div class="scene-mirror"></div>
+        <div class="scene-counter"></div>
+        <div class="scene-bottle"></div>
+        <div class="scene-bottle2"></div>
+        <div class="scene-tag" data-t="hero_tag">3 жарық режимі</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ TOOL / SHAPE GALLERY ============ -->
+<section id="tool">
+  <div class="wrap">
+    <div class="sec-top" data-reveal>
+      <div>
+        <div class="eyebrow" data-t="tool_eyebrow">Инструмент</div>
+        <h2 data-t="tool_title">Айнаңызды өз бөлмеңізде көріңіз</h2>
+        <p data-t="tool_p">Сатып алмас бұрын формасын, түсін және жарығын виртуалды түрде сынап көріңіз.</p>
+      </div>
+      <a href="#ar" class="btn btn-gold" data-t="tool_launch">Инструментті іске қосу →</a>
+    </div>
+
+    <div class="steps-row" id="catalog" data-reveal>
+      <div class="step-card"><div class="num">01</div><h4 data-t="step1_h">Форманы таңдаңыз</h4><p data-t="step1_p">Ұнаған айна пішінін белгілеңіз</p></div>
+      <div class="step-card"><div class="num">02</div><h4 data-t="step2_h">Рама мен жарықты баптаңыз</h4><p data-t="step2_p">Түс пен жарық режимін таңдаңыз</p></div>
+      <div class="step-card"><div class="num">03</div><h4 data-t="step3_h">Фотоңызды жүктеңіз</h4><p data-t="step3_p">Нәтижені бірден экраннан көресіз</p></div>
+      <div class="step-card"><div class="num">04</div><h4 data-t="step4_h">Тапсырыс беріңіз</h4><p data-t="step4_p">WhatsApp арқылы бізге жіберіңіз</p></div>
+    </div>
+
+    <div class="shape-gallery" id="shape-gallery" data-reveal>
+      <div class="shape-card" data-val="rect"><div class="shape-ico ic-rect"></div><span data-t="shape_rect">Тіктөртбұрыш</span></div>
+      <div class="shape-card" data-val="oval"><div class="shape-ico ic-oval"></div><span data-t="shape_round">Дөңгелек</span></div>
+      <div class="shape-card" data-val="oval2"><div class="shape-ico ic-oval" style="width:52px;height:74px;border-radius:50%;"></div><span data-t="shape_oval">Овал</span></div>
+      <div class="shape-card" data-val="arch"><div class="shape-ico ic-arch"></div><span data-t="shape_arch">Арка</span></div>
+      <div class="shape-card active" data-val="capsule"><div class="badge" data-t="badge_new">ЖАҢА</div><div class="shape-ico ic-capsule"></div><span data-t="shape_capsule">Капсула</span></div>
+      <div class="shape-card" data-val="softrect"><div class="shape-ico ic-softrect"></div><span data-t="shape_softrect">Тікбұрыш (дөңгелек бұрыш)</span></div>
+      <div class="shape-card" data-val="blob"><div class="shape-ico ic-blob"></div><span data-t="shape_blob">Ерекше форма</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AR STAGE ============ -->
+<section id="ar" class="ar-section">
+  <div class="wrap">
+    <div class="ar-grid">
+      <div class="ar-panel" data-reveal>
+        <div class="eyebrow" data-t="ar_eyebrow">AR визуализация</div>
+        <h2 style="font-size:clamp(26px,3.2vw,36px); font-weight:800; margin-top:12px; line-height:1.2;" data-t="ar_title">Айнаны сатып алмас бұрын өз фотоңызбен сынаңыз</h2>
+        <p class="lead" data-t="ar_lead">Фотоңызды жүктеңіз, форманы, рама түсін және жарық режимін таңдаңыз — нәтижені бірден экраннан көресіз.</p>
+
+        <div class="ar-controls">
+          <div class="ctrl-row">
+            <label class="ctrl-label" data-t="ctrl_frame">Рама түсі (алюминий)</label>
+            <div class="swatches" id="frame-sw">
+              <button class="sw-btn active" data-val="gold"><span class="sw-dot" style="background:#c79a3f"></span><span data-t="frame_gold">Алтын</span></button>
+              <button class="sw-btn" data-val="gray"><span class="sw-dot" style="background:#8b8b8b"></span><span data-t="frame_gray">Сұр</span></button>
+              <button class="sw-btn" data-val="white"><span class="sw-dot" style="background:#e9e6dd"></span><span data-t="frame_white">Ақ</span></button>
+              <button class="sw-btn" data-val="black"><span class="sw-dot" style="background:#2a2a2a"></span><span data-t="frame_black">Қара</span></button>
+            </div>
+          </div>
+          <div class="ctrl-row">
+            <label class="ctrl-label" data-t="ctrl_light">Жарық түсі</label>
+            <div class="swatches" id="light-sw">
+              <button class="sw-btn" data-val="warm" data-t="light_warm">Жылы</button>
+              <button class="sw-btn" data-val="cold" data-t="light_cold">Суық</button>
+              <button class="sw-btn active" data-val="neutral" data-t="light_neutral">Нейтральды</button>
+            </div>
+          </div>
+          <div class="ctrl-row">
+            <label class="ctrl-label" data-t="ctrl_pos">Жарық орналасуы</label>
+            <div class="swatches" id="pos-sw">
+              <button class="sw-btn active" data-val="frontal" data-t="pos_frontal">Фронтальный</button>
+              <button class="sw-btn" data-val="floating" data-t="pos_floating">Қалқыма</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ar-order">
+          <a href="#" id="order-btn" class="btn btn-gold" target="_blank" data-t="ar_order">Осы конфигурацияға тапсырыс беру</a>
+          <p class="ar-note" data-t="ar_note">* Бұл — алдын ала визуализация. Нақты нәтиже фотоңыз бен жарық жағдайына байланысты өзгеше болуы мүмкін.</p>
+        </div>
+      </div>
+
+      <div class="stage" data-reveal>
+        <div class="mirror-frame shape-capsule fr-gold lt-neutral pos-frontal" id="mirror">
+          <div class="mirror-glass" id="glass">
+            <div class="ph">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#5b5a55" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              <span data-t="ar_placeholder">Фотоңызды жүктеп, айнаны сынап көріңіз</span>
+            </div>
+          </div>
+          <button class="upload-btn" id="upload-trigger" data-t="ar_upload">Фото жүктеу</button>
+        </div>
+        <input type="file" id="file-input" accept="image/*" style="display:none">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ REVIEWS ============ -->
+<section id="reviews">
+  <div class="wrap">
+    <div class="sec-top" data-reveal>
+      <div>
+        <div class="eyebrow" data-t="rev_eyebrow">Пікірлер</div>
+        <h2 data-t="rev_title">Біздің клиенттер не дейді</h2>
+        <div class="rev-summary" style="margin-top:18px;">
+          <b>4.9</b>
+          <div>
+            <div class="stars">★★★★★</div>
+            <div style="font-size:12px; color:var(--muted);" data-t="rev_count">10 000+ пікір негізінде</div>
+          </div>
+        </div>
+        <div class="avatar-row" id="avatar-row"></div>
+      </div>
+      <div class="rev-arrows">
+        <button onclick="revMove(-1)" aria-label="prev"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button onclick="revMove(1)" aria-label="next"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+
+    <div class="rev-track-outer" data-reveal>
+      <div class="rev-track" id="rev-track"></div>
+    </div>
+    <div class="rev-dots" id="rev-dots"></div>
+
+    <div style="margin-top:40px;" data-reveal>
+      <button class="btn btn-ghost" onclick="openReviewForm()" data-t="rev_add_btn">Пікір қалдыру</button>
+    </div>
+
+    <div class="review-form" id="review-form" style="display:none;" data-reveal>
+      <div class="step active" id="step-phone">
+        <h3 data-t="form_h1">Пікір қалдыру үшін кіріңіз</h3>
+        <p class="hint" data-t="form_hint1">Пікір қалдыру үшін телефон нөміріңізді растаңыз.</p>
+        <div class="field"><label data-t="form_phone_label">Телефон нөмірі</label><input type="tel" id="phone-input" placeholder="+7 (7__) ___ __ __"></div>
+        <button class="btn btn-gold" onclick="sendCode()" data-t="form_send_code">Кодты жіберу</button>
+        <div class="form-msg" id="phone-msg"></div>
+      </div>
+      <div class="step" id="step-code">
+        <h3 data-t="form_h2">SMS кодын енгізіңіз</h3>
+        <p class="hint" data-t="form_hint2">Демо режим: кез келген 4 таңбалы кодты енгізіңіз.</p>
+        <div class="field"><label data-t="form_code_label">Растау коды</label><input type="text" id="code-input" maxlength="4" placeholder="0000"></div>
+        <button class="btn btn-gold" onclick="verifyCode()" data-t="form_verify">Растау</button>
+        <div class="form-msg" id="code-msg"></div>
+      </div>
+      <div class="step" id="step-review">
+        <h3 data-t="form_h3">Пікіріңізді жазыңыз</h3>
+        <div class="field"><label data-t="form_name_label">Атыңыз</label><input type="text" id="name-input" placeholder=""></div>
+        <div class="field"><label data-t="form_rating_label">Бағаңыз</label>
+          <div class="star-pick" id="star-pick"><span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span></div>
+        </div>
+        <div class="field"><label data-t="form_text_label">Пікір мәтіні</label><textarea id="text-input"></textarea></div>
+        <button class="btn btn-gold" onclick="submitReview()" data-t="form_submit">Жариялау</button>
+        <div class="form-msg" id="submit-msg"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ PORTFOLIO ============ -->
+<section id="portfolio">
+  <div class="wrap">
+    <div class="sec-top" data-reveal>
+      <div><div class="eyebrow" data-t="port_eyebrow">Біздің жұмыстар</div><h2 data-t="port_title">Дайын жұмыстарымыз</h2></div>
+    </div>
+    <div class="port-grid" data-reveal>
+      <div class="port-item"><div class="scene"></div><div class="pm"></div></div>
+      <div class="port-item"><div class="scene"></div><div class="pm"></div></div>
+      <div class="port-item"><div class="scene"></div><div class="pm"></div></div>
+      <div class="port-item"><div class="scene"></div><div class="pm"></div></div>
+      <div class="port-item"><div class="scene"></div><div class="pm"></div></div>
+      <div class="port-item"><div class="scene"></div><div class="pm"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BENEFITS STRIP ============ -->
+<section class="benefits">
+  <div class="wrap">
+    <div class="benefits-row" data-reveal>
+      <div class="benefit"><svg viewBox="0 0 24 24" fill="none" stroke="#e9c874" stroke-width="1.5"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21 7.5 13.5 2 9h7z"/></svg><h5 data-t="b1_h">Жоғары сапалы материалдар</h5><p data-t="b1_p">Қалыңдығы 4мм, айна қисаймайды</p></div>
+      <div class="benefit"><svg viewBox="0 0 24 24" fill="none" stroke="#e9c874" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><h5 data-t="b2_h">Жеке өндіріс</h5><p data-t="b2_p">Кез келген өлшем, дизайн, мөлшер</p></div>
+      <div class="benefit"><svg viewBox="0 0 24 24" fill="none" stroke="#e9c874" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><h5 data-t="b3_h">5–7 күнде дайын</h5><p data-t="b3_p">Тез әрі сапалы орындаймыз</p></div>
+      <div class="benefit"><svg viewBox="0 0 24 24" fill="none" stroke="#e9c874" stroke-width="1.5"><path d="M3 7l9-4 9 4-9 4-9-4Z"/><path d="M3 12l9 4 9-4M3 17l9 4 9-4"/></svg><h5 data-t="b4_h">Опт және розница</h5><p data-t="b4_p">Кез келген көлемдегі тапсырыс</p></div>
+      <div class="benefit"><svg viewBox="0 0 24 24" fill="none" stroke="#e9c874" stroke-width="1.5"><path d="M4 12c0-4 3-8 8-8s8 4 8 8-3 8-8 8-8-4-8-8Z"/><path d="M8 12c0-2 2-4 4-4"/></svg><h5 data-t="b5_h">Антизапотевание</h5><p data-t="b5_p">Ваннаға арналған қосымша функция</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER / CONTACT ============ -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="brandmark">
+          <svg viewBox="0 0 100 70" width="28" fill="none"><path d="M6 62 L18 20 L32 42 L50 8 L68 42 L82 20 L94 62 Z" stroke="#e9c874" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="none"/><circle cx="6" cy="16" r="6" fill="#e9c874"/><circle cx="18" cy="14" r="6" fill="#e9c874"/><circle cx="50" cy="4" r="6" fill="#e9c874"/><circle cx="82" cy="14" r="6" fill="#e9c874"/><circle cx="94" cy="16" r="6" fill="#e9c874"/></svg>
+          <div class="brand-txt"><span class="word">IMPERIAL</span><span class="sub">LED MIRROR ALMATY</span></div>
+        </div>
+        <p data-t="foot_tagline">Премиум айна өндірісі және монтаж. Сапа, стиль және сенім — біздің басты құндылықтарымыз.</p>
+        <div class="foot-social">
+          <a href="https://wa.me/message/CTMWT6TK5GVBL1" target="_blank" aria-label="WhatsApp"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+          <a href="https://www.instagram.com/imperial_almaty?igsh=bTFpb3l2MTFnc3Rm&utm_source=qr" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.6"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5 data-t="fc1_h">Навигация</h5>
+        <a href="#top" data-t="nav_home">Басты бет</a>
+        <a href="#catalog" data-t="nav_products">Өнімдер</a>
+        <a href="#tool" data-t="nav_tool">Инструмент</a>
+        <a href="#reviews" data-t="nav_reviews">Пікірлер</a>
+        <a href="#contact" data-t="nav_contact">Байланыс</a>
+      </div>
+      <div class="foot-col">
+        <h5 data-t="fc2_h">Өнімдер</h5>
+        <span data-t="shape_capsule" style="display:block; font-size:13.5px; color:var(--muted); margin-bottom:11px;">Капсула айналар</span>
+        <span data-t="shape_arch" style="display:block; font-size:13.5px; color:var(--muted); margin-bottom:11px;">Арка айналар</span>
+        <span data-t="shape_oval" style="display:block; font-size:13.5px; color:var(--muted); margin-bottom:11px;">Овал айналар</span>
+        <span data-t="shape_round" style="display:block; font-size:13.5px; color:var(--muted); margin-bottom:11px;">Дөңгелек айналар</span>
+        <span data-t="shape_blob" style="display:block; font-size:13.5px; color:var(--muted);">Ерекше форма айналар</span>
+      </div>
+      <div class="foot-col">
+        <h5 data-t="fc3_h">Байланыс</h5>
+        <a href="https://wa.me/message/CTMWT6TK5GVBL1" target="_blank">WhatsApp</a>
+        <a href="https://www.instagram.com/imperial_almaty?igsh=bTFpb3l2MTFnc3Rm&utm_source=qr" target="_blank">Instagram</a>
+        <p data-t="loc1_addr" style="margin-top:6px;">Байсат базары, 17Б, 25-контейнер</p>
+        <p data-t="loc2_addr">Северное Кольцо шоссесі, 7Г</p>
+        <div class="foot-map">
+          <iframe loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=76.871%2C43.274%2C76.911%2C43.294&marker=43.284117%2C76.891404"></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p data-t="foot_copy">© 2026 IMPERIAL LED MIRROR ALMATY. Барлық құқықтар қорғалған.</p>
+      <p data-t="foot_hours">Сейсенбі — Жексенбі жұмыс істейміз, Дүйсенбі — демалыс</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ================= i18n ================= */
+const T = {
+  kk: {
+    nav_home:"Басты бет", nav_products:"Өнімдер", nav_tool:"Инструмент", nav_reviews:"Пікірлер", nav_works:"Жұмыстар", nav_contact:"Байланыс", nav_cta:"Тапсырыс беру",
+    hero_eyebrow:"Премиум айналар өндірісі", hero_l2:"LED MIRROR",
+    hero_desc:"10 жылдан астам тәжірибе. Жеке өндіріс. Премиум сапа. Сіздің үйіңізге қалаған кез келген стильді әкелеміз.",
+    hero_btn1:"WhatsApp арқылы тапсырыс беру", hero_btn2:"Инструментпен танысу", hero_tag:"3 жарық режимі",
+    stat1_n:"10+", stat1:"жыл тәжірибе", stat2_n:"10 000+", stat2:"риза клиент", stat3_n:"5–7", stat3:"күнде дайын", stat4_n:"4 мм", stat4:"айна қалыңдығы",
+    tool_eyebrow:"Инструмент", tool_title:"Айнаңызды өз бөлмеңізде көріңіз", tool_p:"Сатып алмас бұрын формасын, түсін және жарығын виртуалды түрде сынап көріңіз.", tool_launch:"Инструментті іске қосу →",
+    step1_h:"Форманы таңдаңыз", step1_p:"Ұнаған айна пішінін белгілеңіз",
+    step2_h:"Рама мен жарықты баптаңыз", step2_p:"Түс пен жарық режимін таңдаңыз",
+    step3_h:"Фотоңызды жүктеңіз", step3_p:"Нәтижені бірден экраннан көресіз",
+    step4_h:"Тапсырыс беріңіз", step4_p:"WhatsApp арқылы бізге жіберіңіз",
+    badge_new:"ЖАҢА",
+    shape_rect:"Тіктөртбұрыш", shape_round:"Дөңгелек", shape_oval:"Овал", shape_arch:"Арка", shape_capsule:"Капсула", shape_softrect:"Тікбұрыш (дөңгелек бұрыш)", shape_blob:"Ерекше форма",
+    ar_eyebrow:"AR визуализация", ar_title:"Айнаны сатып алмас бұрын өз фотоңызбен сынаңыз",
+    ar_lead:"Фотоңызды жүктеңіз, форманы, рама түсін және жарық режимін таңдаңыз — нәтижені бірден экраннан көресіз.",
+    ctrl_frame:"Рама түсі (алюминий)", ctrl_light:"Жарық түсі", ctrl_pos:"Жарық орналасуы",
+    frame_gold:"Алтын", frame_gray:"Сұр", frame_white:"Ақ", frame_black:"Қара",
+    light_warm:"Жылы", light_cold:"Суық", light_neutral:"Нейтральды",
+    pos_frontal:"Фронтальный", pos_floating:"Қалқыма",
+    ar_order:"Осы конфигурацияға тапсырыс беру", ar_note:"* Бұл — алдын ала визуализация. Нақты нәтиже фотоңыз бен жарық жағдайына байланысты өзгеше болуы мүмкін.",
+    ar_placeholder:"Фотоңызды жүктеп, айнаны сынап көріңіз", ar_upload:"Фото жүктеу",
+    rev_eyebrow:"Пікірлер", rev_title:"Біздің клиенттер не дейді", rev_count:"10 000+ пікір негізінде", rev_add_btn:"Пікір қалдыру",
+    form_h1:"Пікір қалдыру үшін кіріңіз", form_hint1:"Пікір қалдыру үшін телефон нөміріңізді растаңыз.",
+    form_phone_label:"Телефон нөмірі", form_send_code:"Кодты жіберу",
+    form_h2:"SMS кодын енгізіңіз", form_hint2:"Демо режим: кез келген 4 таңбалы кодты енгізіңіз.",
+    form_code_label:"Растау коды", form_verify:"Растау",
+    form_h3:"Пікіріңізді жазыңыз", form_name_label:"Атыңыз", form_rating_label:"Бағаңыз", form_text_label:"Пікір мәтіні", form_submit:"Жариялау",
+    port_eyebrow:"Біздің жұмыстар", port_title:"Дайын жұмыстарымыз",
+    b1_h:"Жоғары сапалы материалдар", b1_p:"Қалыңдығы 4мм, айна қисаймайды",
+    b2_h:"Жеке өндіріс", b2_p:"Кез келген өлшем, дизайн, мөлшер",
+    b3_h:"5–7 күнде дайын", b3_p:"Тез әрі сапалы орындаймыз",
+    b4_h:"Опт және розница", b4_p:"Кез келген көлемдегі тапсырыс",
+    b5_h:"Антизапотевание", b5_p:"Ваннаға арналған қосымша функция",
+    fc1_h:"Навигация", fc2_h:"Өнімдер", fc3_h:"Байланыс",
+    foot_tagline:"Премиум айна өндірісі және монтаж. Сапа, стиль және сенім — біздің басты құндылықтарымыз.",
+    loc1_addr:"Байсат базары, 17Б, 25-контейнер", loc2_addr:"Северное Кольцо шоссесі, 7Г",
+    foot_copy:"© 2026 IMPERIAL LED MIRROR ALMATY. Барлық құқықтар қорғалған.", foot_hours:"Сейсенбі — Жексенбі жұмыс істейміз, Дүйсенбі — демалыс",
+    msg_code_sent:"Код нөміріңізге жіберілді (демо: кез келген 4 сан)", msg_phone_empty:"Телефон нөмірін енгізіңіз",
+    msg_code_wrong:"Кодты дұрыс енгізіңіз (4 сан)", msg_verified:"Расталды! Енді пікіріңізді жазыңыз.",
+    msg_fill:"Атыңыз бен пікір мәтінін толтырыңыз", msg_thanks:"Рахмет! Пікіріңіз жарияланды."
+  },
+  ru: {
+    nav_home:"Главная", nav_products:"Продукция", nav_tool:"Инструмент", nav_reviews:"Отзывы", nav_works:"Работы", nav_contact:"Контакты", nav_cta:"Оформить заказ",
+    hero_eyebrow:"Премиальное производство зеркал", hero_l2:"LED MIRROR",
+    hero_desc:"Более 10 лет опыта. Индивидуальное производство. Премиальное качество. Привнесём в ваш дом любой стиль на выбор.",
+    hero_btn1:"Заказать через WhatsApp", hero_btn2:"Открыть инструмент", hero_tag:"3 режима света",
+    stat1_n:"10+", stat1:"лет опыта", stat2_n:"10 000+", stat2:"довольных клиентов", stat3_n:"5–7", stat3:"дней на изготовление", stat4_n:"4 мм", stat4:"толщина зеркала",
+    tool_eyebrow:"Инструмент", tool_title:"Увидьте зеркало в своей комнате", tool_p:"Перед покупкой виртуально примерьте форму, цвет и подсветку.", tool_launch:"Запустить инструмент →",
+    step1_h:"Выберите форму", step1_p:"Отметьте понравившуюся форму зеркала",
+    step2_h:"Настройте раму и свет", step2_p:"Выберите цвет и режим подсветки",
+    step3_h:"Загрузите фото", step3_p:"Результат увидите сразу на экране",
+    step4_h:"Оформите заказ", step4_p:"Отправьте нам конфигурацию в WhatsApp",
+    badge_new:"НОВОЕ",
+    shape_rect:"Прямоугольная", shape_round:"Круглая", shape_oval:"Овальная", shape_arch:"Арка", shape_capsule:"Капсула", shape_softrect:"Прямоугольная (скруглённые углы)", shape_blob:"Особая форма",
+    ar_eyebrow:"AR-визуализация", ar_title:"Примерьте зеркало со своим фото перед покупкой",
+    ar_lead:"Загрузите фото, выберите форму, цвет рамы и режим подсветки — результат увидите сразу на экране.",
+    ctrl_frame:"Цвет рамы (алюминий)", ctrl_light:"Цвет подсветки", ctrl_pos:"Расположение подсветки",
+    frame_gold:"Золото", frame_gray:"Серый", frame_white:"Белый", frame_black:"Чёрный",
+    light_warm:"Тёплый", light_cold:"Холодный", light_neutral:"Нейтральный",
+    pos_frontal:"Фронтальная", pos_floating:"Парящая",
+    ar_order:"Заказать эту конфигурацию", ar_note:"* Это предварительная визуализация. Итоговый результат может отличаться в зависимости от фото и освещения.",
+    ar_placeholder:"Загрузите фото и примерьте зеркало", ar_upload:"Загрузить фото",
+    rev_eyebrow:"Отзывы", rev_title:"Что говорят наши клиенты", rev_count:"на основе 10 000+ отзывов", rev_add_btn:"Оставить отзыв",
+    form_h1:"Войдите, чтобы оставить отзыв", form_hint1:"Для отзыва подтвердите номер телефона.",
+    form_phone_label:"Номер телефона", form_send_code:"Отправить код",
+    form_h2:"Введите код из SMS", form_hint2:"Демо-режим: введите любой 4-значный код.",
+    form_code_label:"Код подтверждения", form_verify:"Подтвердить",
+    form_h3:"Напишите отзыв", form_name_label:"Ваше имя", form_rating_label:"Ваша оценка", form_text_label:"Текст отзыва", form_submit:"Опубликовать",
+    port_eyebrow:"Наши работы", port_title:"Готовые проекты",
+    b1_h:"Качественные материалы", b1_p:"Толщина 4мм, зеркало не искажает",
+    b2_h:"Индивидуальное производство", b2_p:"Любой размер, дизайн, количество",
+    b3_h:"Готово за 5–7 дней", b3_p:"Быстро и качественно",
+    b4_h:"Опт и розница", b4_p:"Заказ любого объёма",
+    b5_h:"Антизапотевание", b5_p:"Дополнительная функция для ванной",
+    fc1_h:"Навигация", fc2_h:"Продукция", fc3_h:"Контакты",
+    foot_tagline:"Премиальное производство и монтаж зеркал. Качество, стиль и доверие — наши главные ценности.",
+    loc1_addr:"Барахолка Байсат, 17Б, 25 контейнер", loc2_addr:"Северное Кольцо шоссе, 7Г",
+    foot_copy:"© 2026 IMPERIAL LED MIRROR ALMATY. Все права защищены.", foot_hours:"Работаем со вторника по воскресенье, понедельник — выходной",
+    msg_code_sent:"Код отправлен на ваш номер (демо: любые 4 цифры)", msg_phone_empty:"Введите номер телефона",
+    msg_code_wrong:"Введите корректный код (4 цифры)", msg_verified:"Подтверждено! Теперь напишите отзыв.",
+    msg_fill:"Заполните имя и текст отзыва", msg_thanks:"Спасибо! Ваш отзыв опубликован."
+  }
+};
+let currentLang = 'kk';
+function setLang(l){
+  currentLang = l;
+  document.getElementById('lang-label').textContent = l==='kk' ? 'ҚАЗ' : 'РУС';
+  document.getElementById('lang-menu').classList.remove('open');
+  document.documentElement.lang = l;
+  document.querySelectorAll('[data-t]').forEach(el=>{
+    const key = el.getAttribute('data-t');
+    if(T[l][key]) el.textContent = T[l][key];
+  });
+  renderReviews();
+}
+document.addEventListener('click', (e)=>{
+  if(!e.target.closest('.langsw')) document.getElementById('lang-menu').classList.remove('open');
+});
+
+/* ================= reveal on scroll ================= */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+},{threshold:0.1});
+document.querySelectorAll('[data-reveal]').forEach(el=>io.observe(el));
+
+/* ================= SHAPE GALLERY -> AR TOOL ================= */
+const shapeMap = {rect:'rect', oval:'oval', oval2:'oval', arch:'arch', capsule:'capsule', softrect:'softrect', blob:'blob'};
+document.querySelectorAll('.shape-card').forEach(card=>{
+  card.addEventListener('click', ()=>{
+    document.querySelectorAll('.shape-card').forEach(c=>c.classList.remove('active'));
+    card.classList.add('active');
+    state.shape = shapeMap[card.getAttribute('data-val')];
+    applyState(); updateOrderLink();
+    document.getElementById('ar').scrollIntoView({behavior:'smooth', block:'center'});
+  });
+});
+
+/* ================= AR TOOL ================= */
+const mirror = document.getElementById('mirror');
+const glass = document.getElementById('glass');
+let state = {shape:'capsule', frame:'gold', light:'neutral', pos:'frontal'};
+function applyState(){ mirror.className = 'mirror-frame shape-'+state.shape+' fr-'+state.frame+' lt-'+state.light+' pos-'+state.pos; }
+function wireSwatches(id, key){
+  document.querySelectorAll('#'+id+' .sw-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('#'+id+' .sw-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      state[key] = btn.getAttribute('data-val');
+      applyState(); updateOrderLink();
+    });
+  });
+}
+wireSwatches('frame-sw','frame');
+wireSwatches('light-sw','light');
+wireSwatches('pos-sw','pos');
+
+document.getElementById('upload-trigger').addEventListener('click', ()=> document.getElementById('file-input').click());
+document.getElementById('file-input').addEventListener('change', (e)=>{
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev)=>{ glass.innerHTML = '<img src="'+ev.target.result+'" alt="preview">'; };
+  reader.readAsDataURL(file);
+});
+
+const shapeLabels = {rect:'Прямоугольная', oval:'Круглая/Овальная', arch:'Арка', capsule:'Капсула', softrect:'Скруглённая', blob:'Особая форма'};
+const frameLabels = {gold:'золото', gray:'серый', white:'белый', black:'чёрный'};
+const lightLabels = {warm:'тёплый', cold:'холодный', neutral:'нейтральный'};
+const posLabels = {frontal:'фронтальная', floating:'парящая'};
+function updateOrderLink(){
+  const msg = 'Сәлеметсіз бе! IMPERIAL LED MIRROR ALMATY сайтынан конфигурация: Форма — '+shapeLabels[state.shape]+', Рама түсі — '+frameLabels[state.frame]+', Жарық — '+lightLabels[state.light]+', Орналасуы — '+posLabels[state.pos]+'. Тапсырыс бергім келеді.';
+  document.getElementById('order-btn').href = 'https://wa.me/message/CTMWT6TK5GVBL1?text=' + encodeURIComponent(msg);
+}
+updateOrderLink();
+applyState();
+
+/* ================= REVIEWS ================= */
+const baseReviews = [
+  {name:{kk:"Айнұр Т.", ru:"Айнур Т."}, stars:5, text:{kk:"Айналар өте сапалы. Жарығы керемет, монтажы өте таза жасалды. Рахмет үлкен!", ru:"Зеркала очень качественные. Свет отличный, монтаж сделали очень аккуратно. Большое спасибо!"}},
+  {name:{kk:"Ержан М.", ru:"Ержан М."}, stars:5, text:{kk:"Дизайны өте әдемі, дәл суреттегідей. Ұсынамын!", ru:"Дизайн очень красивый, точно как на фото. Рекомендую!"}},
+  {name:{kk:"Мадина К.", ru:"Мадина К."}, stars:5, text:{kk:"Қызмет көрсету деңгейі жоғары екен. Уақытында жасап, әкеліп орнатты.", ru:"Уровень сервиса очень высокий. Сделали вовремя, привезли и установили."}},
+  {name:{kk:"Нұрлан Қ.", ru:"Нурлан К."}, stars:4, text:{kk:"Барлығы жақсы, тек жеткізу біраз күттірді. Бірақ нәтижесі құнды.", ru:"Всё хорошо, доставка немного задержалась. Но результат того стоит."}},
+  {name:{kk:"Динара С.", ru:"Динара С."}, stars:5, text:{kk:"Қалқыма подсветкасы бар айна интерьерге керемет үйлесті. Сапасы жоғары.", ru:"Зеркало с парящей подсветкой отлично вписалось в интерьер. Качество высокое."}},
+  {name:{kk:"Тимур А.", ru:"Тимур А."}, stars:5, text:{kk:"Жеке өлшеммен тапсырыс бердім, консультанттар жылдам жауап берді.", ru:"Заказывал по индивидуальным размерам, консультанты быстро отвечали."}},
+  {name:{kk:"Айгүл М.", ru:"Айгуль М."}, stars:5, text:{kk:"Жатын бөлмеге овал формадағы алтын рамалы айна алдым — өте әдемі көрінеді.", ru:"Взяла для спальни овальное зеркало в золотой раме — выглядит очень красиво."}},
+  {name:{kk:"Бауыржан Н.", ru:"Бауыржан Н."}, stars:4, text:{kk:"Сапасы жақсы, бағасы да лайықты. Жеткізу мерзімі көрсетілгендей болды.", ru:"Качество хорошее, цена соответствует. Сроки — как и обещали."}},
+  {name:{kk:"Сәуле Ж.", ru:"Сауле Ж."}, stars:5, text:{kk:"Екінші рет тапсырыс беріп отырмын, бірінші айна 2 жылдан бері мінсіз тұр.", ru:"Заказываю уже второй раз, первое зеркало служит безупречно 2 года."}},
+  {name:{kk:"Дәурен Е.", ru:"Даурен Е."}, stars:5, text:{kk:"Дизайнер ретінде IMPERIAL сапасы мен мерзім сақтауы бойынша үздік.", ru:"Как дизайнер считаю IMPERIAL лучшими по качеству и срокам."}}
+];
+let userReviews = [];
+let revIndex = 0;
+function starsHtml(n){ return '★'.repeat(n) + '☆'.repeat(5-n); }
+function cardsPerView(){ return window.innerWidth <= 980 ? 1 : 3; }
+function renderReviews(){
+  const track = document.getElementById('rev-track');
+  const all = [...userReviews, ...baseReviews];
+  track.innerHTML = all.map(r=>{
+    const name = typeof r.name === 'object' ? r.name[currentLang] : r.name;
+    const text = typeof r.text === 'object' ? r.text[currentLang] : r.text;
+    const initial = name.trim().charAt(0).toUpperCase();
+    return '<div class="rev-card"><div class="rev-head"><div class="rev-avatar">'+initial+'</div><div><div class="rev-name">'+name+'</div><div class="rev-loc stars">'+starsHtml(r.stars)+'</div></div></div><p class="rev-quote">'+text+'</p><div class="rev-thumb"><div class="m"></div></div></div>';
+  }).join('');
+  const avRow = document.getElementById('avatar-row');
+  const colors = ['#caa04a','#8b8b8b','#e9c874','#a17f30','#c79a3f'];
+  avRow.innerHTML = all.slice(0,5).map((r,i)=>{
+    const name = typeof r.name === 'object' ? r.name[currentLang] : r.name;
+    return '<div class="av" style="background:'+colors[i%colors.length]+'">'+name.trim().charAt(0)+'</div>';
+  }).join('') + '<div class="av" style="background:#2a2620; color:#e9c874;">+</div>';
+  renderDots(all.length);
+  revIndex = 0;
+  applyRevTransform();
+}
+function renderDots(total){
+  const perView = cardsPerView();
+  const groups = Math.max(1, Math.ceil(total/perView));
+  const dots = document.getElementById('rev-dots');
+  dots.innerHTML = '';
+  for(let i=0;i<groups;i++){
+    const d = document.createElement('span');
+    if(i===0) d.classList.add('active');
+    d.addEventListener('click', ()=>{ revIndex = i; applyRevTransform(); });
+    dots.appendChild(d);
+  }
+}
+function applyRevTransform(){
+  const perView = cardsPerView();
+  const track = document.getElementById('rev-track');
+  const cardW = track.children[0] ? track.children[0].getBoundingClientRect().width + 18 : 0;
+  track.style.transform = 'translateX(-'+(revIndex*perView*cardW)+'px)';
+  document.querySelectorAll('#rev-dots span').forEach((d,i)=> d.classList.toggle('active', i===revIndex));
+}
+function revMove(dir){
+  const total = userReviews.length + baseReviews.length;
+  const perView = cardsPerView();
+  const groups = Math.max(1, Math.ceil(total/perView));
+  revIndex = (revIndex + dir + groups) % groups;
+  applyRevTransform();
+}
+window.addEventListener('resize', ()=>{ renderDots(userReviews.length+baseReviews.length); revIndex=0; applyRevTransform(); });
+renderReviews();
+
+/* ================= REVIEW FORM FLOW (demo, in-memory) ================= */
+function openReviewForm(){
+  const form = document.getElementById('review-form');
+  form.style.display = 'block';
+  form.classList.add('in');
+  form.scrollIntoView({behavior:'smooth', block:'center'});
+  goStep('step-phone');
+}
+function goStep(id){
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+let verifiedPhone = false;
+function sendCode(){
+  const phone = document.getElementById('phone-input').value.trim();
+  const msg = document.getElementById('phone-msg');
+  if(phone.length < 6){ msg.textContent = T[currentLang].msg_phone_empty; return; }
+  msg.textContent = T[currentLang].msg_code_sent;
+  setTimeout(()=> goStep('step-code'), 600);
+}
+function verifyCode(){
+  const code = document.getElementById('code-input').value.trim();
+  const msg = document.getElementById('code-msg');
+  if(!/^\d{4}$/.test(code)){ msg.textContent = T[currentLang].msg_code_wrong; return; }
+  verifiedPhone = true;
+  msg.textContent = T[currentLang].msg_verified;
+  setTimeout(()=> goStep('step-review'), 500);
+}
+let pickedStars = 5;
+document.querySelectorAll('#star-pick span').forEach(s=>{
+  s.addEventListener('click', ()=>{
+    pickedStars = parseInt(s.getAttribute('data-v'));
+    document.querySelectorAll('#star-pick span').forEach(x=>{
+      x.classList.toggle('on', parseInt(x.getAttribute('data-v')) <= pickedStars);
+    });
+  });
+});
+document.querySelectorAll('#star-pick span').forEach(x=> x.classList.add('on'));
+function submitReview(){
+  const name = document.getElementById('name-input').value.trim();
+  const text = document.getElementById('text-input').value.trim();
+  const msg = document.getElementById('submit-msg');
+  if(!verifiedPhone) return;
+  if(!name || !text){ msg.textContent = T[currentLang].msg_fill; return; }
+  userReviews.unshift({name:name, stars:pickedStars, text:text});
+  renderReviews();
+  msg.textContent = T[currentLang].msg_thanks;
+  setTimeout(()=>{
+    document.getElementById('review-form').style.display = 'none';
+    ['phone-input','code-input','name-input','text-input'].forEach(id=> document.getElementById(id).value='');
+    ['phone-msg','code-msg','submit-msg'].forEach(id=> document.getElementById(id).textContent='');
+    verifiedPhone = false;
+  }, 1600);
+}
+</script>
+</body>
+</html>
